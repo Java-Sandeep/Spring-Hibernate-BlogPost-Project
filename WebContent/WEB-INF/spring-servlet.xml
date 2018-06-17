@@ -1,0 +1,27 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<!-- handler controller (to map URL with actual controller) -->
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+
+	<!-- routing controller -->
+	<bean name="/login.htm" class="routingcontrollers.LoginRoute" ></bean>
+	<bean name="/register.htm" class="routingcontrollers.RegisterRoute" ></bean>
+	<bean name="/blog.htm" class="routingcontrollers.BlogRoute" ></bean>
+	<bean name="/editform.htm" class="routingcontrollers.EditRoute" ></bean>
+	
+	<!-- actual controller  -->
+	<bean name="/reg.htm" class="controller.RegisterController" ></bean>
+	<bean name="/log.htm" class="controller.LoginController" ></bean>
+	<bean name="/addblog.htm" class="controller.AddBlogController" ></bean>
+	<bean name="/delete.htm" class="controller.DeleteController" ></bean>
+	<bean name="/edit.htm" class="controller.EditController" ></bean>
+	
+	<!-- to give response based on page name given by "actual controller" in "model and view object" -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- /next.jsp -->
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+</beans>
